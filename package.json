@@ -1,0 +1,12 @@
+{
+  "name": "pr_1",
+  "version": "1.0.0",
+  "description": "auto load of content by JSON",
+  "main": "shop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

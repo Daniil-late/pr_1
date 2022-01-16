@@ -1,0 +1,141 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+/* -------- */
+.message{
+	width: 100%;
+	background-color: blue;
+	padding: 3.75rem;
+	text-align: center;
+}
+
+.message p{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: white;
+}
+/* todo: починить media */
+@media screen and (min-width:300px)and(max-width:600px) {
+	.message{
+		padding: 1rem;
+	}
+}
+/* -------- */
+header{
+	width: 75%;
+	margin: auto
+}
+
+.header__inner{
+	padding-top: 2.75rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media ((min-width: 300px) and(max-width)){
+	.header__inner{
+		flex-direction: column;
+	}
+}
+
+.header__inner_menu{
+	padding: 1.2rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	border: 1px solid blue;
+	color: blue;
+}
+
+.container{
+	width: 75%;
+	margin: auto;
+}
+.container h1{
+	font-weight: bold;
+	font-size: 3rem;
+}
+
+.shop__info{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.shop__info p{
+	font-size: 1.35rem;
+}
+
+.shop__info .sort{
+	outline: none;
+}
+
+select {
+	font-size: 1.35rem;
+	padding: 0.75rem;
+	overflow: hidden;
+}
+
+.shop__inner{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-content: space-between;
+	margin-top: 3rem;
+}
+.shop__inner_card{
+	margin-bottom: 3rem;
+}
+
+.card__title{
+	font-size: 1.75rem;
+}
+.card__price{
+	font-size: 1.35rem;
+	color: blue;
+}
+
+.card__price span{
+	text-decoration: line-through;
+	color: black;
+}
+
+.card__btn{
+	margin-top: 1.5rem;
+	font-size: 1.25rem;
+	padding: .7rem;
+	background-color: white;
+	outline: none;
+	border: 2px solid blue;
+	color: blue
+}
+
+.pages{
+	font-size: 1.5rem;
+	margin-bottom: 3rem;
+}
+
+.pages_next{
+	font-size: 1.5rem;
+	border: none;
+	background-color: inherit;
+	color: black;
+	cursor: pointer;
+}
+
+.pages__disabled{
+	background-color: blue;
+	padding: 0.5rem 0.85rem;
+	pointer-events: none;
+	color: white
+}
