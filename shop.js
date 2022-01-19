@@ -1,5 +1,19 @@
-import fs from "fs"
-let  fs = require('fs')
-const file = fs.readFileSync('./products.json', 'utf-8')
-const ProdutsObj = JSON.parse(file)
-console.log(ProdutsObj)
+function readTextFile(file, callback) {
+	var rawFile = new XMLHttpRequest();
+	rawFile.overrideMimeType("application/json");
+	rawFile.open("GET", file, true);
+	rawFile.onreadystatechange = function () {
+		if (rawFile.readyState === 4 && rawFile.status == "200") {
+			callback(rawFile.responseText);
+		}
+	}
+	rawFile.send(null);
+}
+
+//usage:
+readTextFile("./products.json", function (text) {
+	var data = JSON.parse(text);
+	console.log(data);
+});
+
+console.log('JSON')
