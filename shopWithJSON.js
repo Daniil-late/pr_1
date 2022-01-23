@@ -105,6 +105,7 @@ const dataFromJSON = JSON.parse(data)
 
 
 
+
 // TODO add Old Price. 
 // while pohui
 
@@ -157,6 +158,8 @@ for (const key in dataFromJSON){
 	containerForCards.appendChild(card)
 	counter++
 }
+
+
 
 
 
