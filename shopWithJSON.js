@@ -103,22 +103,61 @@ const data = `[
 // console.clear()
 const dataFromJSON = JSON.parse(data)
 
-// console.log(dataFromJSON[1])
+
+
+// TODO add Old Price. 
+// while pohui
+
+// try to do this logic with for
 
 const containerForCards = document.getElementById('containerForCards')
-
 const card = document.createElement('div')
 card.classList.add('shop__inner_card')
-const cardImgSrc = dataFromJSON[0].productCard
-const cardTitle = dataFromJSON[0].productTitle
-const productPrice = dataFromJSON[0].productPrice
-let cardOldPrice, cardCurrentPrice
-productPrice.forEach(price => {
-	// TODO add a check oldPrice is undefined or not
-	cardOldPrice = price.oldPrice
-	cardCurrentPrice = price.currentPrice
 
-});
-console.log(cardCurrentPrice, cardOldPrice)
+let counter = 0
+
+for (const key in dataFromJSON){
+	const cardImgSrc = dataFromJSON[key].productCard
+	const cardTitle = dataFromJSON[key].productTitle
+	const productPrice = dataFromJSON[key].productPrice
+	let cardOldPrice, cardCurrentPrice
+	productPrice.forEach(price => {
+		// TODO add a check oldPrice is undefined or not
+		cardOldPrice = price.oldPrice
+		cardCurrentPrice = price.currentPrice
+
+	});
+
+
+	const imgEl = document.createElement('img')
+	imgEl.src = cardImgSrc
+	card.appendChild(imgEl)
+	// add title
+	const hEl = document.createElement('h3')
+	hEl.classList.add('card__title')
+	hEl.textContent = cardTitle
+	card.appendChild(hEl)
+	// add price
+	const priceDiv = document.createElement('div')
+	priceDiv.classList.add('card__price')
+	const pPrice = document.createElement('p')
+	const spanOldPrice = document.createElement('span')
+	spanOldPrice.textContent = cardOldPrice
+	pPrice.appendChild(spanOldPrice)
+	pPrice.textContent = cardCurrentPrice
+	priceDiv.appendChild(pPrice)
+	card.appendChild(priceDiv)
+
+	// add btn
+	// TODO flex
+	const cardBtn = document.createElement('button')
+	cardBtn.classList.add('card__btn')
+	cardBtn.textContent = 'Add to card'
+	card.appendChild(cardBtn)
+	containerForCards.appendChild(card)
+	counter++
+}
+
+
 
 
