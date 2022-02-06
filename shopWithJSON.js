@@ -100,6 +100,7 @@ const data = `[
 	}
 
 ]`
+
 const dataFromJSON = JSON.parse(data)
 //todo sorting
 // перешел на новую ветку createl
@@ -151,8 +152,4 @@ dataFromJSON.forEach(key => {
 	// соединяем все
 	containerForCards.appendChild(card)
 })
-
-
-
-
 
