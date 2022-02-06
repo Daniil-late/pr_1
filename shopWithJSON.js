@@ -100,63 +100,58 @@ const data = `[
 	}
 
 ]`
-// console.clear()
 const dataFromJSON = JSON.parse(data)
+//todo sorting
+// перешел на новую ветку createl
+dataFromJSON.forEach(key => {
+	let cardImgSrc = key.productCard
+	let cardTitle = key.productTitle
+	let oldCardPrice, currentCardPrice
+	key.productPrice.forEach(price => {
+		currentCardPrice = price.currentPrice
+		oldCardPrice = price.oldPrice
+	})
+	const containerForCards = document.getElementById('containerForCards')
+	const card = document.createElement('div')
+	card.classList.add('shop__inner_card')
+	// создание элементов
+	// картинка
+	const cardImg = document.createElement('img')
+	cardImg.src = cardImgSrc
+	card.appendChild(cardImg)
+	// название
+	const cardHeader = document.createElement('h3')
+	cardHeader.textContent = cardTitle
+	card.appendChild(cardHeader)
+	// цена
+	const cardPrices = document.createElement('div')
+	cardPrices.classList.add('card__price')
+	// проверям существование старой цены
+	if (oldCardPrice === "undefined") {
+		const currentCardPriceText = document.createElement('p')
+		currentCardPriceText.textContent = currentCardPrice
+		cardPrices.appendChild(currentCardPriceText)
+		card.appendChild(cardPrices)
+	} else {
+		const currentCardPriceText = document.createElement('p')
+		currentCardPriceText.textContent = currentCardPrice
+		const oldCardPriceText = document.createElement('span')
+		oldCardPriceText.textContent = oldCardPrice
+		currentCardPriceText.appendChild(oldCardPriceText)
+		cardPrices.appendChild(currentCardPriceText)
+		card.appendChild(cardPrices)
+	}
+	// кнопка add to Cart
 
+	const btnCardAdd = document.createElement('button')
+	btnCardAdd.classList.add('card__btn')
+	btnCardAdd.textContent = 'Add to cart'
+	card.appendChild(btnCardAdd)
 
-
-// TODO add Old Price. 
-// while pohui
-
-// try to do this logic with for
-
-const containerForCards = document.getElementById('containerForCards')
-const card = document.createElement('div')
-card.classList.add('shop__inner_card')
-
-let counter = 0
-
-for (const key in dataFromJSON){
-	const cardImgSrc = dataFromJSON[key].productCard
-	const cardTitle = dataFromJSON[key].productTitle
-	const productPrice = dataFromJSON[key].productPrice
-	let cardOldPrice, cardCurrentPrice
-	productPrice.forEach(price => {
-		// TODO add a check oldPrice is undefined or not
-		cardOldPrice = price.oldPrice
-		cardCurrentPrice = price.currentPrice
-
-	});
-
-
-	const imgEl = document.createElement('img')
-	imgEl.src = cardImgSrc
-	card.appendChild(imgEl)
-	// add title
-	const hEl = document.createElement('h3')
-	hEl.classList.add('card__title')
-	hEl.textContent = cardTitle
-	card.appendChild(hEl)
-	// add price
-	const priceDiv = document.createElement('div')
-	priceDiv.classList.add('card__price')
-	const pPrice = document.createElement('p')
-	const spanOldPrice = document.createElement('span')
-	spanOldPrice.textContent = cardOldPrice
-	pPrice.appendChild(spanOldPrice)
-	pPrice.textContent = cardCurrentPrice
-	priceDiv.appendChild(pPrice)
-	card.appendChild(priceDiv)
-
-	// add btn
-	// TODO flex
-	const cardBtn = document.createElement('button')
-	cardBtn.classList.add('card__btn')
-	cardBtn.textContent = 'Add to card'
-	card.appendChild(cardBtn)
+	// соединяем все
 	containerForCards.appendChild(card)
-	counter++
-}
+})
+
 
 
 
